@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { ResultService } from '../state/result';
-import { Observable } from "rxjs";
+import { RemoteService } from '../state/remote';
 
 @Component({
   selector: 'app-forms',
@@ -9,9 +8,8 @@ import { Observable } from "rxjs";
 })
 export class FormsComponent {
   step: string = 'user';
-  store$: Observable<Object> = this.resultService.store$;
 
-  constructor(private resultService: ResultService) { }
+  constructor(private remoteService: RemoteService) { }
 
   next() {
     this.step = 'health';
@@ -22,7 +20,7 @@ export class FormsComponent {
   }
 
   submit() {
-    this.resultService.sendDataToServer();
+    this.remoteService.sendDataToServer();
 
     this.back();
   }

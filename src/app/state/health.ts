@@ -2,15 +2,9 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
-const initialHealth = {
-  height: 75,
-  weight: 210,
-  bmi: 5
-};
-
 const UPDATE_HEALTH = 'UPDATE_HEALTH';
 
-export const health = (state: Object = initialHealth, action: {type: string, payload: any}) => {
+export const health = (state: Object = {}, action: {type: string, payload: any}) => {
   switch (action.type) {
     case UPDATE_HEALTH:
       return action.payload;

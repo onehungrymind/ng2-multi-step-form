@@ -3,8 +3,7 @@ import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/take';
 
 @Injectable()
-export class ResultService {
-  store$: Store<Object> = this.store;
+export class RemoteService {
   constructor(private store: Store<Object>) {}
 
   sendDataToServer() {

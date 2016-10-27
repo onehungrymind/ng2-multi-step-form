@@ -6,7 +6,7 @@ import { MaterialModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { user, UserService } from './state/user';
 import { health, HealthService } from './state/health';
-import { ResultService} from './state/result';
+import { RemoteService} from './state/remote';
 
 import { AppComponent } from './app.component';
 import { ResultComponent } from './result/result.component';
@@ -32,7 +32,7 @@ import { HealthComponent } from './forms/health/health.component';
   providers: [
     UserService,
     HealthService,
-    ResultService
+    RemoteService
   ],
   bootstrap: [AppComponent]
 })
