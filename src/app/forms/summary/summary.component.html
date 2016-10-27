@@ -7,7 +7,7 @@
       <strong>Name:</strong> {{(store | async)?.user.firstName}} {{(store | async)?.user.lastName}}
     </p>
     <p>
-      <strong>Gender:</strong> {{(store | async)?.user.gender}}
+      <strong>Gender:</strong> {{(store | async)?.user.gender | capitalize}}
     </p>
     <h3>Health</h3>
     <p>

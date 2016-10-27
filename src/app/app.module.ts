@@ -15,6 +15,7 @@ import { SuccessDialogComponent } from './forms/success-dialog.component';
 import { UserComponent } from './forms/user/user.component';
 import { HealthComponent } from './forms/health/health.component';
 import { SummaryComponent } from './forms/summary/summary.component';
+import { CapitalizePipe } from './forms/summary/capitalize.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SummaryComponent } from './forms/summary/summary.component';
     UserComponent,
     HealthComponent,
     SuccessDialogComponent,
-    SummaryComponent
+    SummaryComponent,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,
