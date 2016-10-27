@@ -1,3 +1,5 @@
+![image](https://cloud.githubusercontent.com/assets/1544557/19788913/4f9b2a6a-9c60-11e6-8626-ad6517719742.png)
+
 # ng2-multi-step-form
 
 A multi-step form built using Angular 2, ngrx, and Angular-CLI.
