@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
+import { MdDialogConfig, MdDialog, MdDialogRef } from '@angular/material';
 import { RemoteService } from '../state/remote';
+import { SuccessDialogComponent } from './success-dialog.component';
 
 @Component({
   selector: 'app-forms',
@@ -8,8 +10,13 @@ import { RemoteService } from '../state/remote';
 })
 export class FormsComponent {
   step: string = 'user';
+  dialogRef: MdDialogRef<SuccessDialogComponent>;
 
-  constructor(private remoteService: RemoteService) { }
+  constructor(
+    private remoteService: RemoteService,
+    private viewContainerRef: ViewContainerRef,
+    private dialog: MdDialog
+  ) { }
 
   next() {
     this.step = 'health';
@@ -20,9 +27,17 @@ export class FormsComponent {
   }
 
   submit() {
-    this.remoteService.sendDataToServer();
+    this.remoteService.sendDataToServer()
+      .subscribe(data => this.openDialog());
 
     this.back();
+  }
+
+  openDialog() {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.viewContainerRef;
+
+    this.dialogRef = this.dialog.open(SuccessDialogComponent, config);
   }
 
 }

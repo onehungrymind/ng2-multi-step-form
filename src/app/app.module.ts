@@ -11,6 +11,7 @@ import { RemoteService} from './state/remote';
 import { AppComponent } from './app.component';
 import { ResultComponent } from './result/result.component';
 import { FormsComponent } from './forms/forms.component';
+import { SuccessDialogComponent } from './forms/success-dialog.component';
 import { UserComponent } from './forms/user/user.component';
 import { HealthComponent } from './forms/health/health.component';
 
@@ -20,7 +21,8 @@ import { HealthComponent } from './forms/health/health.component';
     ResultComponent,
     FormsComponent,
     UserComponent,
-    HealthComponent
+    HealthComponent,
+    SuccessDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,9 @@ import { HealthComponent } from './forms/health/health.component';
     HttpModule,
     MaterialModule.forRoot(),
     StoreModule.provideStore({user, health})
+  ],
+  entryComponents: [
+    SuccessDialogComponent
   ],
   providers: [
     UserService,

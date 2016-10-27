@@ -7,8 +7,6 @@ export class RemoteService {
   constructor(private store: Store<Object>) {}
 
   sendDataToServer() {
-    this.store
-      .take(1)
-      .subscribe(store => alert('Sending data to server: \n\n' + JSON.stringify(store, null, '  ')));
+    return this.store.take(1);
   }
 }
