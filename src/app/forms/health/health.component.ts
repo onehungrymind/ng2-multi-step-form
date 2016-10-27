@@ -10,14 +10,12 @@ import { HealthService } from "../../state/health";
 export class HealthComponent implements OnInit {
   @Output() onSubmit: EventEmitter<Object> = new EventEmitter();
   @Output() onBack: EventEmitter<Object> = new EventEmitter();
-
-  health$: Observable<Object> = this.healthService.health$;
   health: Object = {};
 
   constructor(private healthService: HealthService) { }
 
   ngOnInit() {
-    this.health$.subscribe(health => this.health = Object.assign({}, health));
+    this.healthService.health$.subscribe(health => this.health = Object.assign({}, health));
   }
 
   submit(health) {

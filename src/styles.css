@@ -11,6 +11,6 @@ body {
   margin-left: -24px;
   margin-right: -24px;
 }
-.container md-card-actions [md-button]:first-child {
+.container md-card-actions [md-raised-button]:first-child {
   margin: 0 4px;
 }

@@ -10,14 +10,12 @@ import { Observable } from "rxjs/Observable";
 export class UserComponent implements OnInit {
   @Output() onNext: EventEmitter<Object> = new EventEmitter();
   @Output() onBack: EventEmitter<Object> = new EventEmitter();
-
-  user$: Observable<Object> = this.userService.user$;
   user: Object = {};
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    this.user$.subscribe(user => this.user = Object.assign({}, user));
+    this.userService.user$.subscribe(user => this.user = Object.assign({}, user));
   }
 
   next(user) {
