@@ -4,3 +4,13 @@ body {
   margin: 0;
   background: whitesmoke;
 }
+.container md-card-actions {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #673ab7;
+  margin-left: -24px;
+  margin-right: -24px;
+}
+.container md-card-actions [md-button]:first-child {
+  margin: 0 4px;
+}
