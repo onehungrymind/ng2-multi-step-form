@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+md-card {
+  margin: 10px;
+}
+.fill {
+  flex: 1 1 auto;
+}
