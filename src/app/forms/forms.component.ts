@@ -9,7 +9,8 @@ import { SuccessDialogComponent } from './success-dialog.component';
   styleUrls: ['./forms.component.css']
 })
 export class FormsComponent {
-  step: string = 'user';
+  step: number = 1;
+  totalSteps: number = 3;
   dialogRef: MdDialogRef<SuccessDialogComponent>;
 
   constructor(
@@ -19,18 +20,24 @@ export class FormsComponent {
   ) { }
 
   next() {
-    this.step = 'health';
+    if (this.step + 1 <= this.totalSteps)
+      this.step++;
   }
 
   back() {
-    this.step = 'user';
+    if (this.step - 1 >= 1)
+      this.step--;
+  }
+
+  backToStart() {
+    this.step = 1;
   }
 
   submit() {
     this.remoteService.sendDataToServer()
       .subscribe(data => this.openDialog());
 
-    this.back();
+    this.backToStart();
   }
 
   openDialog() {

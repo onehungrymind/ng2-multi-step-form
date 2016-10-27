@@ -8,7 +8,7 @@ import { HealthService } from "../../state/health";
   styleUrls: ['./health.component.css']
 })
 export class HealthComponent implements OnInit {
-  @Output() onSubmit: EventEmitter<Object> = new EventEmitter();
+  @Output() onNext: EventEmitter<Object> = new EventEmitter();
   @Output() onBack: EventEmitter<Object> = new EventEmitter();
   health: Object = {};
 
@@ -18,9 +18,9 @@ export class HealthComponent implements OnInit {
     this.healthService.health$.subscribe(health => this.health = Object.assign({}, health));
   }
 
-  submit(health) {
+  next(health) {
     this.healthService.updateHealth(health);
-    this.onSubmit.emit();
+    this.onNext.emit();
   }
 
 }

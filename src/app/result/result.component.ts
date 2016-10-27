@@ -7,6 +7,5 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./result.component.css']
 })
 export class ResultComponent {
-  store$: Store<Object> = this.store;
   constructor(private store: Store<Object>) { }
 }

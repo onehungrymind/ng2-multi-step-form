@@ -14,6 +14,7 @@ import { FormsComponent } from './forms/forms.component';
 import { SuccessDialogComponent } from './forms/success-dialog.component';
 import { UserComponent } from './forms/user/user.component';
 import { HealthComponent } from './forms/health/health.component';
+import { SummaryComponent } from './forms/summary/summary.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HealthComponent } from './forms/health/health.component';
     FormsComponent,
     UserComponent,
     HealthComponent,
-    SuccessDialogComponent
+    SuccessDialogComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,
