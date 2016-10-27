@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { UserService } from '../../state/user';
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-user',
@@ -6,12 +8,20 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  @Output() onNext: EventEmitter<undefined> = new EventEmitter();
-  @Output() onBack: EventEmitter<undefined> = new EventEmitter();
+  @Output() onNext: EventEmitter<Object> = new EventEmitter();
+  @Output() onBack: EventEmitter<Object> = new EventEmitter();
+  user$: Observable<Object> = this.userService.user$;
+  user: Object = {};
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.user$.subscribe(user => this.user = Object.assign({}, user));
+  }
+
+  next(user) {
+    this.userService.updateUser(user);
+    this.onNext.emit();
   }
 
 }

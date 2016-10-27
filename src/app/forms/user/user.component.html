@@ -2,12 +2,16 @@
   <md-card-subtitle>Step <strong>1</strong> of <strong>2</strong></md-card-subtitle>
   <md-card-title>User</md-card-title>
   <md-card-content>
-    <p>This is supporting text.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad</p>
+
+    <md-input [(ngModel)]="user.firstName" placeholder="First name"></md-input>
+    <md-input [(ngModel)]="user.lastName" placeholder="Last name"></md-input>
+    <md-radio-group [(ngModel)]="user.gender">
+      <md-radio-button value="male">Male</md-radio-button>
+      <md-radio-button value="female">Female</md-radio-button>
+    </md-radio-group>
   </md-card-content>
   <md-card-actions>
     <button md-button color="warn" (click)="onBack.emit()">BACK</button>
-    <button md-button color="warn" (click)="onNext.emit()">NEXT</button>
+    <button md-button color="warn" (click)="next(user)">NEXT</button>
   </md-card-actions>
 </md-card>

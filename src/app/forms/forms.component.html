@@ -1,2 +1,4 @@
-<app-user (onNext)="next()" (onBack)="back()" *ngIf="step === 1"></app-user>
-<app-health (onNext)="next()" (onBack)="back()" *ngIf="step === 2"></app-health>
+<form>
+  <app-user (onNext)="next()" (onBack)="back()" *ngIf="step === 'user'"></app-user>
+  <app-health (onSubmit)="submit()" (onBack)="back()" *ngIf="step === 'health'"></app-health>
+</form>

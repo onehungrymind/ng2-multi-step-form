@@ -1,0 +1,8 @@
+md-card-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+md-input {
+  width: 49.5%;
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { HealthService } from "../../state/health";
 
 @Component({
   selector: 'app-health',
@@ -6,12 +8,20 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./health.component.css']
 })
 export class HealthComponent implements OnInit {
-  @Output() onNext: EventEmitter<undefined> = new EventEmitter();
-  @Output() onBack: EventEmitter<undefined> = new EventEmitter();
+  @Output() onSubmit: EventEmitter<Object> = new EventEmitter();
+  @Output() onBack: EventEmitter<Object> = new EventEmitter();
+  health$: Observable<Object> = this.healthService.health$;
+  health: Object = {};
 
-  constructor() { }
+  constructor(private healthService: HealthService) { }
 
   ngOnInit() {
+    this.health$.subscribe(health => this.health = Object.assign({}, health));
+  }
+
+  submit(health) {
+    this.healthService.updateHealth(health);
+    this.onSubmit.emit();
   }
 
 }

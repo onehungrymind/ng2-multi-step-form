@@ -1,27 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ResultService } from '../state/result';
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.css']
 })
-export class FormsComponent implements OnInit {
-  step: number = 1;
-  totalSteps: number = 2;
+export class FormsComponent {
+  step: string = 'user';
+  store$: Observable<Object> = this.resultService.store$;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  constructor(private resultService: ResultService) { }
 
   next() {
-    if (this.step + 1 <= this.totalSteps)
-      this.step++;
+    this.step = 'health';
   }
 
   back() {
-    if (this.step - 1 >= 1)
-      this.step--;
+    this.step = 'user';
+  }
+
+  submit() {
+    this.resultService.sendDataToServer();
+
+    this.back();
   }
 
 }
