@@ -1,6 +1,5 @@
 <form novalidate [formGroup]="form">
   <app-user
-    [group]="form.controls.user"
     (onNext)="next()"
     (onBack)="back()"
     *ngIf="step === 1"
