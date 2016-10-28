@@ -1,18 +1,15 @@
-<form novalidate [formGroup]="form">
-  <app-user
-    (onNext)="next()"
-    (onBack)="back()"
-    *ngIf="step === 1"
-  ></app-user>
-  <app-health
-    [group]="form.controls.health"
-    (onNext)="next()"
-    (onBack)="back()"
-    *ngIf="step === 2"
-  ></app-health>
-  <app-summary
-    (onSubmit)="submit()"
-    (onBack)="back()"
-    *ngIf="step === 3"
-  ></app-summary>
-</form>
+<app-user
+	(onNext)="next()"
+	(onBack)="back()"
+	*ngIf="step === 1"
+	></app-user>
+<app-health
+	(onNext)="next()"
+	(onBack)="back()"
+	*ngIf="step === 2"
+	></app-health>
+<app-summary
+	(onSubmit)="submit()"
+	(onBack)="back()"
+	*ngIf="step === 3"
+	></app-summary>

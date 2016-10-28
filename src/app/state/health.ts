@@ -4,6 +4,12 @@ import { Observable } from 'rxjs/Observable';
 
 const UPDATE_HEALTH = 'UPDATE_HEALTH';
 
+export interface HealthProfile {
+  height: number;
+  weight: number;
+  bmi: number;
+}
+
 export const health = (state: Object = {}, action: {type: string, payload: any}) => {
   switch (action.type) {
     case UPDATE_HEALTH:

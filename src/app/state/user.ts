@@ -4,6 +4,12 @@ import { Observable } from 'rxjs/Observable';
 
 const UPDATE_USER = 'UPDATE_USER';
 
+export interface UserProfile {
+  firstName: string;
+  lastName: string;
+  gender: string;
+}
+
 export const user = (state: Object = {}, action: {type: string, payload: any}) => {
   switch (action.type) {
     case UPDATE_USER:

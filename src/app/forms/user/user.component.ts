@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { UserService } from '../../state/user';
+import { UserService, UserProfile } from '../../state/user';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -10,8 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class UserComponent implements OnInit {
   @Output() onNext: EventEmitter<Object> = new EventEmitter();
   @Output() onBack: EventEmitter<Object> = new EventEmitter();
+  user: UserProfile;
   form: FormGroup;
-  user: Object = {};
 
   constructor(
     private userService: UserService,
@@ -19,6 +19,8 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.userService.user$.subscribe(user => this.user = Object.assign({}, user));
+
     this.form = this.fb.group({
       firstName: [''],
       lastName: [''],
@@ -30,5 +32,4 @@ export class UserComponent implements OnInit {
     this.userService.updateUser(this.form.value);
     this.onNext.emit();
   }
-
 }
