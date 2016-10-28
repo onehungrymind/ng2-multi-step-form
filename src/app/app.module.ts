@@ -11,11 +11,13 @@ import { RemoteService} from './state/remote';
 import { AppComponent } from './app.component';
 import { ResultComponent } from './result/result.component';
 import { FormsComponent } from './forms/forms.component';
-import { SuccessDialogComponent } from './forms/success-dialog.component';
+import { SuccessDialogComponent } from './forms/summary/success-dialog.component';
 import { UserComponent } from './forms/user/user.component';
 import { HealthComponent } from './forms/health/health.component';
 import { SummaryComponent } from './forms/summary/summary.component';
 import { CapitalizePipe } from './forms/summary/capitalize.pipe';
+
+import { Ng2MultiStepFormRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { CapitalizePipe } from './forms/summary/capitalize.pipe';
     ReactiveFormsModule,
     HttpModule,
     MaterialModule.forRoot(),
-    StoreModule.provideStore({user, health})
+    StoreModule.provideStore({user, health}),
+    Ng2MultiStepFormRoutingModule
   ],
   entryComponents: [
     SuccessDialogComponent

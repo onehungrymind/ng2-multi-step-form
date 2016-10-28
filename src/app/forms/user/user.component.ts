@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
-import { UserService, UserProfile } from '../../state/user';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService, UserProfile } from '../../state/user';
 
 @Component({
   selector: 'app-user',
@@ -8,28 +9,29 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  @Output() onNext: EventEmitter<Object> = new EventEmitter();
-  @Output() onBack: EventEmitter<Object> = new EventEmitter();
-  user: UserProfile;
   form: FormGroup;
 
   constructor(
     private userService: UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.userService.user$.subscribe(user => this.user = Object.assign({}, user));
+    this.userService.user$
+      .subscribe(this.initForm.bind(this));
+  }
 
+  initForm(user: UserProfile) {
     this.form = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      gender: ['']
+      firstName: [user.firstName],
+      lastName: [user.lastName],
+      gender: [user.gender]
     });
   }
 
   next() {
     this.userService.updateUser(this.form.value);
-    this.onNext.emit();
+    this.router.navigateByUrl('health');
   }
 }

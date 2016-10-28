@@ -6,3 +6,6 @@ md-card-content {
 md-input {
   width: 49.5%;
 }
+md-card-actions {
+  justify-content: flex-end;
+}

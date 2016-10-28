@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { HealthService, HealthProfile } from "../../state/health";
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HealthService, HealthProfile } from "../../state/health";
 
 @Component({
   selector: 'app-health',
@@ -8,28 +9,33 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./health.component.css']
 })
 export class HealthComponent implements OnInit {
-  @Output() onNext: EventEmitter<Object> = new EventEmitter();
-  @Output() onBack: EventEmitter<Object> = new EventEmitter();
-  health: HealthProfile;
   form: FormGroup;
 
   constructor(
     private healthService: HealthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.healthService.health$.subscribe(health => this.health = Object.assign({}, health));
+    this.healthService.health$
+      .subscribe(this.initForm.bind(this));
+  }
 
+  initForm(health: HealthProfile) {
     this.form = this.fb.group({
-      height: [''],
-      weight: [''],
-      bmi: ['']
+      height: [health.height],
+      weight: [health.weight],
+      bmi: [health.bmi]
     });
+  }
+
+  back() {
+    this.router.navigateByUrl('user');
   }
 
   next() {
     this.healthService.updateHealth(this.form.value);
-    this.onNext.emit();
+    this.router.navigateByUrl('summary');
   }
 }
