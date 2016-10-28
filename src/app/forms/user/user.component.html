@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="form">
+<form novalidate [formGroup]="form" (submit)="next()">
   <md-card>
     <md-card-subtitle>Step <strong>1</strong> of <strong>3</strong></md-card-subtitle>
     <md-card-title>User</md-card-title>
@@ -13,7 +13,7 @@
     </md-card-content>
     <md-card-actions>
       <button type="button" md-raised-button color="accent" (click)="onBack.emit()">BACK</button>
-      <button type="submit" md-raised-button color="accent" (click)="next()">NEXT</button>
+      <button type="submit" md-raised-button color="accent">NEXT</button>
     </md-card-actions>
   </md-card>
 </form>

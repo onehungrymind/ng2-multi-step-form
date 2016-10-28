@@ -1,6 +1,5 @@
 import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { MdDialogConfig, MdDialog, MdDialogRef } from '@angular/material';
-import { FormBuilder, FormGroup } from "@angular/forms";
 import { RemoteService } from '../state/remote';
 import { SuccessDialogComponent } from './success-dialog.component';
 
@@ -13,38 +12,21 @@ export class FormsComponent implements OnInit{
   step: number = 1;
   totalSteps: number = 3;
   dialogRef: MdDialogRef<SuccessDialogComponent>;
-  form: FormGroup
 
   constructor(
     private remoteService: RemoteService,
     private viewContainerRef: ViewContainerRef,
     private dialog: MdDialog,
-    private fb: FormBuilder
   ) { }
 
-  ngOnInit() {
-    this.form = this.fb.group({
-      user: this.fb.group({
-        firstName: [''],
-        lastName: [''],
-        gender: ['']
-      }),
-      health: this.fb.group({
-        height: [''],
-        weight: [''],
-        bmi: ['']
-      })
-    })
-  }
+  ngOnInit() {}
 
   next() {
-    if (this.step + 1 <= this.totalSteps)
-      this.step++;
+    if (this.step + 1 <= this.totalSteps) this.step++;
   }
 
   back() {
-    if (this.step - 1 >= 1)
-      this.step--;
+    if (this.step - 1 >= 1) this.step--;
   }
 
   backToStart() {
@@ -64,5 +46,4 @@ export class FormsComponent implements OnInit{
 
     this.dialogRef = this.dialog.open(SuccessDialogComponent, config);
   }
-
 }
