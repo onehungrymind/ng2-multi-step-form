@@ -1,5 +1,6 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { MdDialogConfig, MdDialog, MdDialogRef } from '@angular/material';
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { RemoteService } from '../state/remote';
 import { SuccessDialogComponent } from './success-dialog.component';
 
@@ -8,16 +9,33 @@ import { SuccessDialogComponent } from './success-dialog.component';
   templateUrl: './forms.component.html',
   styleUrls: ['./forms.component.css']
 })
-export class FormsComponent {
+export class FormsComponent implements OnInit{
   step: number = 1;
   totalSteps: number = 3;
   dialogRef: MdDialogRef<SuccessDialogComponent>;
+  form: FormGroup
 
   constructor(
     private remoteService: RemoteService,
     private viewContainerRef: ViewContainerRef,
-    private dialog: MdDialog
+    private dialog: MdDialog,
+    private fb: FormBuilder
   ) { }
+
+  ngOnInit() {
+    this.form = this.fb.group({
+      user: this.fb.group({
+        firstName: [''],
+        lastName: [''],
+        gender: ['']
+      }),
+      health: this.fb.group({
+        height: [''],
+        weight: [''],
+        bmi: ['']
+      })
+    })
+  }
 
   next() {
     if (this.step + 1 <= this.totalSteps)

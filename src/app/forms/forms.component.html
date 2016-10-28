@@ -1,10 +1,12 @@
-<form>
+<form novalidate [formGroup]="form">
   <app-user
+    [group]="form.controls.user"
     (onNext)="next()"
     (onBack)="back()"
     *ngIf="step === 1"
   ></app-user>
   <app-health
+    [group]="form.controls.health"
     (onNext)="next()"
     (onBack)="back()"
     *ngIf="step === 2"

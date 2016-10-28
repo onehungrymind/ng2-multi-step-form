@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HealthService } from "../../state/health";
 
 @Component({
@@ -8,6 +7,7 @@ import { HealthService } from "../../state/health";
   styleUrls: ['./health.component.css']
 })
 export class HealthComponent implements OnInit {
+  @Input() group;
   @Output() onNext: EventEmitter<Object> = new EventEmitter();
   @Output() onBack: EventEmitter<Object> = new EventEmitter();
   health: Object = {};
@@ -18,8 +18,8 @@ export class HealthComponent implements OnInit {
     this.healthService.health$.subscribe(health => this.health = Object.assign({}, health));
   }
 
-  next(health) {
-    this.healthService.updateHealth(health);
+  next() {
+    this.healthService.updateHealth(this.group.value);
     this.onNext.emit();
   }
 

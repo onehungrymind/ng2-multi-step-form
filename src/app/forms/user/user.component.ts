@@ -1,6 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { UserService } from '../../state/user';
-import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'app-user',
@@ -8,6 +7,7 @@ import { Observable } from "rxjs/Observable";
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  @Input() group;
   @Output() onNext: EventEmitter<Object> = new EventEmitter();
   @Output() onBack: EventEmitter<Object> = new EventEmitter();
   user: Object = {};
@@ -18,8 +18,8 @@ export class UserComponent implements OnInit {
     this.userService.user$.subscribe(user => this.user = Object.assign({}, user));
   }
 
-  next(user) {
-    this.userService.updateUser(user);
+  next() {
+    this.userService.updateUser(this.group.value);
     this.onNext.emit();
   }
 

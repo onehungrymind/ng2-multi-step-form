@@ -1,10 +1,10 @@
-<md-card>
+<md-card [formGroup]="group">
   <md-card-subtitle>Step <strong>2</strong> of <strong>3</strong></md-card-subtitle>
   <md-card-title>Health</md-card-title>
   <md-card-content>
-    <md-input [(ngModel)]="health.height" placeholder="Height"></md-input>
-    <md-input [(ngModel)]="health.weight" placeholder="Weight"></md-input>
-    <md-input [(ngModel)]="health.bmi" placeholder="BMI"></md-input>
+    <md-input formControlName="height" placeholder="Height"></md-input>
+    <md-input formControlName="weight" placeholder="Weight"></md-input>
+    <md-input formControlName="bmi" placeholder="BMI"></md-input>
   </md-card-content>
   <md-card-actions>
     <button type="button" md-raised-button color="accent" (click)="onBack.emit()">BACK</button>
