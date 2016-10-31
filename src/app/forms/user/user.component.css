@@ -4,8 +4,22 @@ md-card-content {
   flex-wrap: wrap;
 }
 md-input {
-  width: 49.5%;
+  width: 100%;
 }
 md-card-actions {
   justify-content: flex-end;
+}
+
+.error {
+  font-size: 13px;
+  color: #c7254e;
+  background: #f9f2f4;
+  border-radius: 3px;
+  padding: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.form-group {
+  width: 100%;
 }

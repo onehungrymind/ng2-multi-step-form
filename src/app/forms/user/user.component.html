@@ -3,16 +3,27 @@
     <md-card-subtitle>Step <strong>1</strong> of <strong>3</strong></md-card-subtitle>
     <md-card-title>User</md-card-title>
     <md-card-content>
-
-      <md-input formControlName="firstName" placeholder="First name"></md-input>
-      <md-input formControlName="lastName" placeholder="Last name"></md-input>
-      <md-radio-group formControlName="gender">
-        <md-radio-button value="male">Male</md-radio-button>
-        <md-radio-button value="female">Female</md-radio-button>
-      </md-radio-group>
+      <div class="form-group">
+        <md-input formControlName="firstName" placeholder="First name"></md-input>
+        <div class="error" *ngIf="form.get('firstName').touched && form.get('firstName').hasError('required')">
+          <strong>First name is required</strong>
+        </div>
+      </div>
+      <div class="form-group">
+        <md-input formControlName="lastName" placeholder="Last name"></md-input>
+        <div class="error" *ngIf="form.get('lastName').touched && form.get('lastName').hasError('required')">
+          <strong>Last name is required</strong>
+        </div>
+      </div>
+      <div class="form-group">
+        <md-radio-group formControlName="gender">
+          <md-radio-button value="male">Male</md-radio-button>
+          <md-radio-button value="female">Female</md-radio-button>
+        </md-radio-group>
+      </div>
     </md-card-content>
     <md-card-actions>
-      <button type="submit" md-raised-button color="accent">NEXT</button>
+      <button type="submit" [disabled]="form.invalid" md-raised-button color="accent">NEXT</button>
     </md-card-actions>
   </md-card>
 </form>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService, UserProfile } from '../../state/user';
 
@@ -24,8 +24,8 @@ export class UserComponent implements OnInit {
 
   initForm(user: UserProfile) {
     this.form = this.fb.group({
-      firstName: [user.firstName],
-      lastName: [user.lastName],
+      firstName: [user.firstName, Validators.required],
+      lastName: [user.lastName, Validators.required],
       gender: [user.gender]
     });
   }
