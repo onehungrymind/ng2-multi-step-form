@@ -19,14 +19,27 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.userService.user$
-      .subscribe(this.initForm.bind(this));
+      .subscribe(user => {
+        this.initForm(user);
+        this.handleFormChanges();
+      });
   }
 
   initForm(user: UserProfile) {
     this.form = this.fb.group({
       firstName: [user.firstName, Validators.required],
       lastName: [user.lastName, Validators.required],
-      gender: [user.gender]
+      gender: [user.gender],
+      isAwesome: [user.isAwesome],
+      awesomenessReason: [user.awesomenessReason]
+    });
+  }
+
+  handleFormChanges() {
+    this.form.get('isAwesome').valueChanges.subscribe(value => {
+      if (!value) {
+        this.form.get('awesomenessReason').setValue('');
+      }
     });
   }
 

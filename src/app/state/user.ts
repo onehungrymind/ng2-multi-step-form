@@ -9,12 +9,16 @@ export interface UserProfile {
   firstName: string;
   lastName: string;
   gender: string;
+  isAwesome: boolean;
+  awesomenessReason: string;
 }
 
 const initialState = {
   firstName: '',
   lastName: '',
-  gender: ''
+  gender: '',
+  isAwesome: false,
+  awesomenessReason: ''
 };
 
 export const user = (state: UserProfile = initialState, action: {type: string, payload: any}) => {

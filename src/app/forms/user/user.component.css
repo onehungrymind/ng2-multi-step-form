@@ -23,3 +23,7 @@ md-card-actions {
 .form-group {
   width: 100%;
 }
+
+.space {
+  margin-bottom: 15px;
+}
