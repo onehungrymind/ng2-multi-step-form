@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { AppStore } from './app-store';
 
@@ -17,7 +17,7 @@ const initialState = {
   bmi: null
 };
 
-export const health = (state: HealthProfile = initialState, action: {type: string, payload: any}) => {
+export const health = (state: HealthProfile = initialState, action: Action) => {
   switch (action.type) {
     case UPDATE_HEALTH:
       return action.payload;

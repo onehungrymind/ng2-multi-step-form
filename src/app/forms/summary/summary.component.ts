@@ -38,6 +38,6 @@ export class SummaryComponent {
     this.dialogRef = this.dialog.open(SuccessDialogComponent, config);
 
     this.dialogRef.afterClosed()
-      .subscribe(_ => this.router.navigateByUrl('user'))
+      .subscribe(event => this.router.navigateByUrl('user'))
   }
 }

@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: 'user',    component: UserComponent},
   {path: 'health',  component: HealthComponent},
   {path: 'summary', component: SummaryComponent},
-  {path: '*',       component: UserComponent }
+  {path: '**',      redirectTo: '/user', pathMatch: 'full' }
 ];
 
 @NgModule({

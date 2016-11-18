@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { AppStore } from './app-store';
 
@@ -21,7 +21,7 @@ const initialState = {
   awesomenessReason: ''
 };
 
-export const user = (state: UserProfile = initialState, action: {type: string, payload: any}) => {
+export const user = (state: UserProfile = initialState, action: Action) => {
   switch (action.type) {
     case UPDATE_USER:
       return action.payload;
